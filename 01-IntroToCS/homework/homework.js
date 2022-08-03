@@ -7,18 +7,16 @@ function BinarioADecimal(num) {
 
 function DecimalABinario(num) {
   // tu codigo aca
-  let resultado = 0;
   let res = 0;
-  let a_res = [];
+  let a_residuo = [];
 
   do {
-    resultado = Math.floor(num / 2);
-    res = num - (resultado * 2);
-    a_res.unshift(res);
-    num = resultado;
-  } while (resultado !== 0);
+    res = num % 2;
+    a_residuo.unshift(res);
+    num = Math.floor(num / 2);
+  } while (num > 0);
 
-  return a_res.join('');
+  return a_residuo.join('');
 }
 
 module.exports = {
