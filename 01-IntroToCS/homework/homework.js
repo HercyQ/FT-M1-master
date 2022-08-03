@@ -14,11 +14,9 @@ function DecimalABinario(num) {
   do {
     resultado = Math.floor(num / 2);
     res = num - (resultado * 2);
-    a_res.push(res);
+    a_res.unshift(res);
     num = resultado;
   } while (resultado !== 0);
-  
-  a_res.reverse();
 
   return a_res.join('');
 }
