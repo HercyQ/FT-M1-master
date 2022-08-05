@@ -2,15 +2,14 @@
 
 function BinarioADecimal(num) {
   // tu codigo aca
-  let decimal = 0;
-  let binario = [];
-  binario = num.split('').reverse();
+  let result = 0;
+  num = num.split('').reverse();
 
-  for (let i = 0; i < binario.length; i++) {
-    decimal += binario[i] * Math.pow(2, i);
+  for (let i = 0; i < num.length; i++) {
+    result += parseInt(num[i]) * Math.pow(2, i);
   }
 
-  return decimal;
+  return result;
 }
 
 function DecimalABinario(num) {
