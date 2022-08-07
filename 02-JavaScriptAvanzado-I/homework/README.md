@@ -167,5 +167,5 @@ function printing() {
    console.log(4);
 }
 
-printing();
+printing(); // 1 4 3 2   Por que  los console.lo que estan fuera de las funciones setTimeout se ejecutan en el instante que se llama a la funcion, y 3 y 2 , se muestran despues que pase el tiempo establecido en cada uno de sus funciones
 ```
