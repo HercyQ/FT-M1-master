@@ -6,7 +6,9 @@ function counter() {
   /*
   Ejercicio 1
 
-  La función counter debe retornar otra función. Esta función retornada debe actuar como un contador, retornando un valor numérico que empieza en 1 e incrementa con cada invocación.
+  La función counter debe retornar otra función. Esta función retornada debe actuar
+  como un contador, retornando un valor numérico que empieza en 1 e incrementa con 
+  cada invocación.
 
   Ejemplo:
   const nuevoContador = counter()
@@ -18,8 +20,24 @@ function counter() {
   otroContador()      // 1
   otroContador()      // 2
   otroContador()      // 3
-   */
+  */
+  var contador = 0;
+  return function () {
+    contador++;
+    return contador;
+  };
 }
+
+var nuevoContador = counter();
+nuevoContador();
+nuevoContador();
+nuevoContador();
+nuevoContador();
+
+var otroContador = counter();
+otroContador();
+otroContador();
+otroContador();
 
 function cacheFunction(cb) {
   /*
@@ -41,6 +59,15 @@ function cacheFunction(cb) {
   squareCache(5)    // no volverá a invocar a square, simplemente buscará en la caché cuál es el resultado de square(5) y lo retornará (tip: si usaste un objeto, podés usar hasOwnProperty) 
 
   */
+  var cache = {};
+  return function (arg) {
+    if (cache.hasOwnProperty(arg)) {
+      return cache[arg];
+    } else {
+      cache[arg] = cb(arg);
+      return cache[arg];
+    }
+  };
 }
 
 // Bind
@@ -67,8 +94,11 @@ function getNombre() {
   Usando el método bind() guardar, en las dos variables declaradas a continuación, dos funciones que actúen como getNombre pero retornen el nombre del instructor y del alumno, respectivamente.
 */
 
-let getNombreInstructor;
-let getNombreAlumno;
+let getNombreInstructor = getNombre.bind(instructor);
+let getNombreAlumno = getNombre.bind(alumno);
+
+getNombreInstructor();
+getNombreAlumno();
 
 /*
   Ejercicio 4
@@ -80,9 +110,9 @@ function crearCadena(delimitadorIzquierda, delimitadorDerecha, cadena) {
   return delimitadorIzquierda + cadena + delimitadorDerecha;
 }
 
-let textoAsteriscos;
-let textoGuiones;
-let textoUnderscore;
+let textoAsteriscos = crearCadena.bind(null, "*", "*");
+let textoGuiones = crearCadena.bind(null, "-", "-");
+let textoUnderscore = crearCadena.bind(null, "_", "_");
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
