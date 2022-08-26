@@ -33,67 +33,26 @@ Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde e
 
 Pueden utilizar class o función constructora.
 */
-
-class Queue {
-  constructor() {
-    this.items = {};
-    this.front = 0;
-    this.end = 0;
-  }
-
-  //Ingresa elementos al objeto
-  enqueue(data) {
-    this.items[this.end] = data;
-    this.end++;
-  }
-  //Quita desde el primero en la fila
-  dequeue() {
-    if (this.front === this.end) {
-      return undefined;
-    }
-
-    const data = this.items[this.front];
-    delete this.items[this.front];
-    this.front++;
-    return data;
-  }
-
-  //Vemos cantidad de elementos
-  size() {
-    return this.end - this.front;
-  }
-
-  //Vemos si la fila esta vacia o llena
-  isEmpty() {
-    if (this.size() === 0) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  //Observamos que valor es el primero de la fila
-  peek() {
-    if (this.size() === 0) {
-      return null;
-    }
-    return this.items[this.front];
-  }
-
-  //Imprimimos todos los valores de la fila
-  print() {
-    if (this.size() === 0) {
-      return null;
-    }
-
-    let result = "";
-    for (let i = this.front; i < this.end; i++) {
-      result += this.items[i] + " ";
-    }
-
-    return result;
-  }
+//Implementamos la clase Queue
+function Queue() {
+  this.array = [];
 }
+
+//Agregar un valor a la queue.Respeta el orden existente
+Queue.prototype.enqueue = function (elem) {
+  this.array.push(elem);
+}
+
+//Quitar un elemento.
+Queue.prototype.dequeue = function () {
+  return this.array.shift();
+}
+
+//Tamaño de Queue
+Queue.prototype.size = function() {
+  return this.array.length;
+}
+
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
